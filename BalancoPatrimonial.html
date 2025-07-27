@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Balanço Patrimonial - Silvanio Gois Fictícia Ltda. (2024)</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+        }
+        h1, h2 {
+            color: #00d4ff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background-color: #222;
+        }
+        th, td {
+            padding: 1rem;
+            border: 1px solid #333;
+            text-align: right;
+        }
+        th {
+            background-color: #333;
+            color: #00d4ff;
+        }
+        td:first-child, th:first-child {
+            text-align: left;
+        }
+        canvas {
+            max-width: 800px;
+            margin: auto;
+            display: block;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        .analysis {
+            background-color: #003c4d;
+            padding: 1.5rem;
+            border-radius: 10px;
+            color: #bdfaff;
+        }
+        .perfil {
+            margin-bottom: 2rem;
+            color: #bdfaff;
+            font-size: 1rem;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="perfil">
+            <p><strong>Silvanio Gois</strong> — Técnico em Administração e Edificações | Graduando em Processos Gerenciais</p>
+            <p>Email: <a href="mailto:sg@silvaniogois.com.br" style="color:#00d4ff;">sg@silvaniogois.com.br</a></p>
+            <p><strong style="color:#00d4ff;">Silvanio Gois Fictícia Ltda.</strong></p>
+        </div>
+
+        <h1>Balanço Patrimonial - Exercício 2024</h1>
+
+        <h2>Ativos</h2>
+        <table>
+            <tr><th>Descrição</th><th>Valor (R$)</th></tr>
+            <tr><td>Caixa e Equivalentes de Caixa</td><td>1.765.000</td></tr>
+            <tr><td>Clientes a Receber</td><td>200.000</td></tr>
+            <tr><td>Outros Créditos</td><td>35.000</td></tr>
+            <tr><td><strong>Ativo Circulante</strong></td><td><strong>2.000.000</strong></td></tr>
+            <tr><td>Ativo Não Circulante</td><td>1.500.000</td></tr>
+            <tr><th>Total do Ativo</th><th>3.500.000</th></tr>
+        </table>
+
+        <h2>Passivos e Patrimônio Líquido</h2>
+        <table>
+            <tr><th>Descrição</th><th>Valor (R$)</th></tr>
+            <tr><td>Passivo Circulante</td><td>900.000</td></tr>
+            <tr><td>Passivo Não Circulante</td><td>700.000</td></tr>
+            <tr><td>Patrimônio Líquido</td><td>1.900.000</td></tr>
+            <tr><th>Total do Passivo + PL</th><th>3.500.000</th></tr>
+        </table>
+
+        <canvas id="graficoBalanco"></canvas>
+
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color" style="background-color: #00d4ff;"></div>Caixa</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #4caf50;"></div>Clientes</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #81c784;"></div>Outros Créditos</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #3f51b5;"></div>Ativo Não Circulante</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #f44336;"></div>Passivo Circulante</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #ff9800;"></div>Passivo Não Circulante</div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #3efc9b;"></div>Patrimônio Líquido</div>
+        </div>
+
+        <div class="analysis">
+            <h2>Análise</h2>
+            <p>O balanço patrimonial da Silvanio Gois Fictícia Ltda. demonstra uma estrutura equilibrada entre capital próprio e de terceiros. O patrimônio líquido representa mais de 54% do total, o que é saudável para a sustentabilidade do negócio. A empresa apresenta ativos suficientes para cobrir seus passivos totais, mantendo uma base sólida de capital. O detalhamento do ativo circulante evidencia a consistência com o fluxo de caixa apurado.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('graficoBalanco').getContext('2d');
+        const graficoBalanco = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Caixa', 'Clientes', 'Outros Créditos', 'Ativo Não Circulante', 'Passivo Circulante', 'Passivo Não Circulante', 'Patrimônio Líquido'],
+                datasets: [{
+                    label: 'Valores (R$)',
+                    data: [1765000, 200000, 35000, 1500000, 900000, 700000, 1900000],
+                    backgroundColor: [
+                        '#00d4ff', '#4caf50', '#81c784', '#3f51b5', '#f44336', '#ff9800', '#3efc9b'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#f0f0f0'
+                        },
+                        grid: {
+                            color: '#444'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#f0f0f0'
+                        },
+                        grid: {
+                            color: '#444'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
