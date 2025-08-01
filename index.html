@@ -12,6 +12,7 @@
       margin: 0;
       padding: 2rem;
     }
+
     .container {
       max-width: 1000px;
       margin: auto;
@@ -20,9 +21,11 @@
       border-radius: 12px;
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
     }
+
     h1, h2 {
       color: #00d4ff;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -31,29 +34,40 @@
       overflow-x: auto;
       display: block;
     }
+
     th, td {
       padding: 1rem;
       border: 1px solid #333;
       text-align: right;
       white-space: nowrap;
     }
+
     th {
       background-color: #333;
       color: #00d4ff;
     }
+
     td:first-child, th:first-child {
       text-align: left;
     }
+
+    .grafico-wrapper {
+      overflow-x: auto;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
     canvas {
-      max-width: 100%;
-      height: auto;
-      margin: 2rem auto;
-      display: block;
       background-color: #fff;
       border-radius: 8px;
       padding: 1rem;
+      min-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
       box-sizing: border-box;
     }
+
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -61,28 +75,33 @@
       margin-top: 1rem;
       gap: 1rem;
     }
+
     .legend-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-size: 0.95rem;
     }
+
     .legend-color {
       width: 16px;
       height: 16px;
       border-radius: 4px;
     }
+
     .analysis {
       background-color: #003c4d;
       padding: 1.5rem;
       border-radius: 10px;
       color: #bdfaff;
     }
+
     .perfil {
       margin-bottom: 2rem;
       color: #bdfaff;
       font-size: 1rem;
     }
+
     a {
       text-decoration: none;
     }
@@ -92,28 +111,35 @@
       body {
         padding: 1rem;
       }
+
       .container {
         padding: 1rem;
       }
-      .perfil,
-      .analysis p {
+
+      .perfil, .analysis p {
         font-size: 0.95rem;
       }
+
       h1 {
         font-size: 1.5rem;
       }
+
       h2 {
         font-size: 1.2rem;
       }
+
       table {
         font-size: 0.85rem;
       }
+
       canvas {
         padding: 0.5rem;
       }
+
       .legend {
         gap: 0.5rem;
       }
+
       .legend-item {
         font-size: 0.85rem;
       }
@@ -150,7 +176,9 @@
       <tr><th>Total do Passivo + PL</th><th>3.500.000</th></tr>
     </table>
 
-    <canvas id="graficoBalanco"></canvas>
+    <div class="grafico-wrapper">
+      <canvas id="graficoBalanco"></canvas>
+    </div>
 
     <div class="legend">
       <div class="legend-item"><div class="legend-color" style="background-color: #00d4ff;"></div>Caixa</div>
@@ -176,7 +204,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('graficoBalanco').getContext('2d');
-    const graficoBalanco = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Caixa', 'Clientes', 'Outros Créditos', 'Ativo Não Circulante', 'Passivo Circulante', 'Passivo Não Circulante', 'Patrimônio Líquido'],
@@ -198,20 +226,12 @@
         },
         scales: {
           y: {
-            ticks: {
-              color: '#f0f0f0'
-            },
-            grid: {
-              color: '#444'
-            }
+            ticks: { color: '#f0f0f0' },
+            grid: { color: '#444' }
           },
           x: {
-            ticks: {
-              color: '#f0f0f0'
-            },
-            grid: {
-              color: '#444'
-            }
+            ticks: { color: '#f0f0f0' },
+            grid: { color: '#444' }
           }
         }
       }
